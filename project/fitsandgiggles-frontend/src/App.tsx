@@ -18,6 +18,18 @@ function App() {
 
         <p>{data ? data : 'Loading...'}</p>
 
+        const [dataB, setDataB] = React.useState<string | null>(null);
+        React.useEffect(() => {
+          fetch('http://localhost:8080/api/test')
+            .then(res => res.text())
+            .then(data => setData(data)) //
+            .catch(error => console.error('Error fetching dataB:', error));
+        }, []);
+
+        console.log("Data fetched:", dataB);
+
+        <p>{dataB ? dataB : 'Loading...'}</p>
+
 
   return (
     <div className="App">
